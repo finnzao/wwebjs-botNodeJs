@@ -1,22 +1,20 @@
 import express from 'express';
 import cors from 'cors'
-import { Client } from 'whatsapp-web.js';
 import { onReady, onQr, onMessage } from './bot/events';
-import config from "./config/index"
+import client from "./config/index"
 import { router } from './routes';
 
 const port = process.env.PORT || 3333
 const server = express()
 
-const client = new Client(config.client);
 
 
-// CLIENT
-client.on('message', message => onMessage(client, message));
-client.on('ready', onReady);
+// CLIENT START
+
+client.on('message_create', message => onMessage(client, message));
+client.on('ready', (_: any)=> onReady(client));
 client.on('qr', onQr);
 
-client.initialize();
 // SERVER
 server.use(cors({
     origin: process.env.ENABLED_CORS?.split(';') || []

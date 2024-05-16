@@ -3,6 +3,7 @@ import { sendMessage } from '../../services/whatsappService';
 
 export const postSendMessage = async (req: Request, res: Response): Promise<void> => {
     const { number, message } = req.body;
+    console.log(number,message)
     if (!number || !message) {
         res.status(400).send('Número e mensagem são obrigatórios.');
         return;

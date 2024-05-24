@@ -1,4 +1,3 @@
-
 import Whatsapp, { ClientOptions } from 'whatsapp-web.js'
 const { Client, LocalAuth } = Whatsapp
 

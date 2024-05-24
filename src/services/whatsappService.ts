@@ -1,8 +1,5 @@
 import client from '../config/index';
 
-
-
-
 export const sendMessage = async (number: string, message: string) => {
 
     try {
